@@ -29,9 +29,12 @@ public class ProgramHierarchy extends GraphicsProgram {
 	}
 	
 	private void draw () {
-		/* The calculations x and y effectively divide the screen into quadrants.  X takes the screen width and subtracts the value of 3 box widths to determine the amount of 
-		   screen size used horizontally by the 3 boxes.  The remaining free space is divided by 4 to find the equal amount of space needed on the outside of each box, as well as 
-		   between the boxes.  Y does the same calculation with the vertical space for two boxes and divides the remaining free space by 3.  
+		/* The calculations x and y effectively divide the screen into quadrants.  
+		 * X takes the screen width and subtracts the value of 3 box widths to determine the 
+		 * amount of screen size used horizontally by the 3 boxes.  The remaining free space 
+		 * is divided by 4 to find the equal amount of space needed on the outside of each box, 
+		 * as well as between the boxes.  Y does the same calculation with the vertical space 
+		 * for two boxes and divides the remaining free space by 3.  
 		   Example:
 		   Screen Size = 800
 		   Box Width = 120 (As set by class constant)
