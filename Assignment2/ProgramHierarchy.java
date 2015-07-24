@@ -13,7 +13,7 @@ import java.awt.*;
 public class ProgramHierarchy extends GraphicsProgram {	
 	
 	private static final double BOX_HEIGHT = 60;
-	private static final double BOX_WIDTH = 150;
+	private static final double BOX_WIDTH = 120;
 	
 	private double x;
 	private double y;
@@ -32,15 +32,15 @@ public class ProgramHierarchy extends GraphicsProgram {
 		/* The calculations x and y effectively divide the screen into quadrants.  
 		 * X takes the screen width and subtracts the value of 3 box widths to determine the 
 		 * amount of screen size used horizontally by the 3 boxes.  The remaining free space 
-		 * is divided by 4 to find the equal amount of space needed on the outside of each box, 
-		 * as well as between the boxes.  Y does the same calculation with the vertical space 
+		 * is divided by 4 to find the equal amount of space needed on the outside of each box 
+		 * to center the boxes on the screen.  Y does the same calculation with the vertical space 
 		 * for two boxes and divides the remaining free space by 3.  
 		   Example:
 		   Screen Size = 800
 		   Box Width = 120 (As set by class constant)
 		   Used horizontal space = 3 * 120 = 360
 		   Free horizontal space = 800 - 360 = 440
-		   Equal free-space between each box = 440 / (3 boxes + 1 for fence-post problem) = 110
+		   Equal free-space between each box = 440 / (3 boxes + 1 for fence-post) = 110
 		   If re-assembled at the second row that contains the 3 boxes, this would look like:
 		   Free-Space + Box_Width + Free-Space + Box_Width + Free-Space + Box_Width + Free-Space or
 		   110 + 120 + 110 + 120 + 110 + 120 + 110 = 800 (Original screen size)
@@ -87,10 +87,10 @@ public class ProgramHierarchy extends GraphicsProgram {
 		GLabel consoleLabel = new GLabel("ConsoleProgram");
 		GLabel dialogLabel = new GLabel("DialogProgram");
 		
-		programLabel.setFont("SansSerif-14");
-		graphicsLabel.setFont("SansSerif-14");
-		consoleLabel.setFont("SansSerif-14");
-		dialogLabel.setFont("SansSerif-14");
+		programLabel.setFont("SansSerif-12");
+		graphicsLabel.setFont("SansSerif-12");
+		consoleLabel.setFont("SansSerif-12");
+		dialogLabel.setFont("SansSerif-12");
 		
 		double progWidth = programLabel.getWidth();
 		double graphWidth = graphicsLabel.getWidth();
