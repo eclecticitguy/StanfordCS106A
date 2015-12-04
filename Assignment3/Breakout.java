@@ -8,6 +8,7 @@
  */
 
 import acm.graphics.*;
+
 import acm.program.*;
 import acm.util.*;
 
@@ -57,10 +58,66 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 
+/** The last mouse position */
+	private double mX;
+	
+/** Paddle constant to use in multiple methods */
+	private GRect paddle;
+	
+
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		setupBoard();
+		addPaddle();
+		addMouseListeners();
 	}
-
+	
+	public void setupBoard() {
+		int y = BRICK_Y_OFFSET;
+		for (int i = 1; i <= NBRICK_ROWS; i++) {
+			int x = ((NBRICKS_PER_ROW * BRICK_WIDTH) + (NBRICKS_PER_ROW * BRICK_SEP + BRICK_SEP) - WIDTH) / 2;
+			for (int j = 1; j <= NBRICKS_PER_ROW; j++) {
+				GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+				if (i == 1 || i == 2) {
+					brick.setColor(Color.red);
+					brick.setFilled(true);
+				} else if (i == 3 || i == 4) {
+					brick.setColor(Color.orange);
+					brick.setFilled(true);
+				} else if (i == 5 || i == 6) {
+					brick.setColor(Color.yellow);
+					brick.setFilled(true);
+				} else if (i == 7 || i == 8) {
+					brick.setColor(Color.green);
+					brick.setFilled(true);
+				} else {
+					brick.setColor(Color.cyan);
+					brick.setFilled(true);
+				}
+				add(brick);
+				x += (BRICK_WIDTH + BRICK_SEP); 
+			}
+			y += (BRICK_HEIGHT + BRICK_SEP);
+		}
+	}
+	
+	public void addPaddle() {
+		paddle = new GRect(mX, HEIGHT - PADDLE_Y_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT);
+		paddle.setFilled(true);
+		add(paddle);
+	}
+	
+	public void mouseMoved(MouseEvent e) {
+        mX = e.getX();
+        // Determine whether current position of cursor and width of paddle would be longer than screen width
+        // If not, set X position of paddle the same as the cursor
+        if (mX + PADDLE_WIDTH <= WIDTH) {
+        	paddle.setLocation(mX, HEIGHT - PADDLE_Y_OFFSET);
+        // Otherwise, set X position of the paddle to the furthest right it can go without going off the screen
+        } else {
+        	paddle.setLocation(WIDTH - PADDLE_WIDTH, HEIGHT - PADDLE_Y_OFFSET);
+        }
+    }
+	
 }
